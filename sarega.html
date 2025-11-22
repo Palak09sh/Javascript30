@@ -1,0 +1,81 @@
+<!-- You’re improving, but you need to push harder and stop playing safe.
+You’re capable of way more than this level. -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saregama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height:100%;
+            width:100%;
+            background-image: url('https://i.pinimg.com/736x/c3/12/ca/c312ca9b852ba21e204709bdc22ba324.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 45px;
+            margin: 335px;
+        }
+
+        .key {
+            background-color: rgb(0, 0, 0, 0.6);
+            width: 150px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div data-key="sa" class="key">Sa</div>
+        <div data-key="re" class="key">Re</div>
+        <div data-key="ga" class="key">Ga</div>
+        <div data-key="ma" class="key">Ma</div>
+        <div data-key="pa" class="key">Pa</div>
+        <div data-key="dha" class="key">Dha</div>
+        <div data-key="ni" class="key">Ni</div>
+        <div data-key="sa'" class="key">Sa'</div>
+    </div>
+    <audio data-key="sa" src="./audio/Sa_v2.wav"></audio>
+    <audio data-key="re" src="./audio/Re_v2.wav"></audio>
+    <audio data-key="ga" src="./audio/Ga_v2.wav"></audio>
+    <audio data-key="ma" src="./audio/Ma_v2.wav"></audio>
+    <audio data-key="pa" src="./audio/Pa_v2.wav"></audio>
+    <audio data-key="dha" src="./audio/Dha_v2.wav"></audio>
+    <audio data-key="ni" src="./audio/Ni_v2.wav"></audio>
+    <audio data-key="sa'" src="./audio/Sa_high_v2.wav"></audio>
+    <script>
+    const keys = document.querySelectorAll('.key')
+    keys.forEach(key => {
+ key.addEventListener('mouseenter',function(e){
+        const audio = document.querySelector(`audio[data-key="${e.target.dataset.key}"]`)
+        if(!audio) return
+        audio.play();
+    })
+    }
+    )
+   
+
+    </script>
+</body>
+
+</html>
+<!-- dataset is the readonly property of HTML element interface provide read/write element with the custom attribute data-* 
+ e.target denotes occuring of event-->
