@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --base: #d39435;
+            --spacing: 15px;
+            --blur: 1px;
+        }
+
+        body {
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            background-color: #272626;
+        }
+
+        img {
+            width: 40vw;
+            height: 40vh;
+            padding: var(--spacing);
+            background-color: var(--base); /*so that it can be update dynamically in JS*/
+            filter: blur(var(--blur));
+
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        h2 .h1 {
+            color: var(--base)
+        }
+
+        .controls {
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .controls input range {
+            margin-bottom: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Update CSS variables with
+        <span class="h1">JS</span>
+    </h2>
+    <div class="controls">
+
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" min="15px" max="200px" value="10" data-sizing="px">
+        <label for="blur">Blur:</label>
+        <input type="range" name="blur" min="1px" max="15px" value="1" >
+        <label for="base">Base-Color:</label>
+        <input type="color" name="base" value="#d39435">
+        <input type = "lfj" name="fjd">
+    </div>
+    <img src="https://plus.unsplash.com/premium_photo-1677347335105-1bd16607a25e?q=80&w=767&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="image not found">
+    <script>
+        const inputs = document.querySelectorAll('.controls input')
+        
+        function handleUpdate() {
+            // if the data-sizing = "px" suffix will be px otherwise it will be nothing
+            const suffix = this.dataset.sizing || '';
+            // allowing multiple element to change together. and allowing update of CSS variable in real-time.
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+        }
+        inputs.forEach(input => input.addEventListener('change', handleUpdate
+        ))
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate
+        ))
+
+
+    </script>
+</body>
+
+<!-- :root = document.documentElement css variables defined in root generally -->
+ <!-- addEventListener is a built-in DOM method
+If you change spelling → JS can’t find it → error
+queryselectorAll is static it will not update the DOM automatically 
+Not only camelCase — the name must exactly match the function name -->
+
+</html>
